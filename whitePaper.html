@@ -1,0 +1,620 @@
+<!DOCTYPE html><html><head>
+      <title>whitePaper</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/zdw/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.6.5/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      <script type="text/javascript" src="file:////home/zdw/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.6.5/node_modules/@shd101wyy/mume/dependencies/mermaid/mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="mnbbsc%E8%AF%B4%E6%98%8E">MNB@BSC&#x8BF4;&#x660E;</h1>
+
+<h2 class="mume-header" id="%E8%83%8C%E6%99%AF">&#x80CC;&#x666F;</h2>
+
+<ul>
+<li>MNB&#x662F;MNT&#x5728;BSC&#x4E0A;&#x7684;&#x4FA7;&#x94FE;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x8FDE;&#x63A5;MNT&#x4EA7;&#x751F;&#x66F4;&#x591A;&#x7684;&#x4EF7;&#x503C;.</li>
+<li>&#x533A;&#x5757;&#x94FE;&#x8BDE;&#x751F;&#x5DF2;10&#x5E74;&#x6709;&#x4F59;&#xFF0C;&#x5728;&#x8FD9;10&#x591A;&#x5E74;&#x95F4;&#x7684;&#x53D1;&#x5C55;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5236;&#x9020;&#x4E86;&#x592A;&#x591A;&#x7684;&#x9020;&#x5BCC;&#x795E;&#x8BDD;&#xFF0C;&#x8BA9;&#x5F88;&#x591A;&#x4EBA;&#x5BF9;&#x6295;&#x8D44;&#x533A;&#x5757;&#x94FE;&#x8822;&#x8822;&#x6B32;&#x52A8;&#xFF0C;&#x7136;&#x800C;&#x6295;&#x8D44;&#x662F;&#x975E;&#x5E38;&#x56F0;&#x96BE;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x5BF9;&#x6280;&#x672F;&#xFF0C;&#x5E02;&#x573A;&#xFF0C;&#x91D1;&#x878D;&#xFF0C;&#x4EBA;&#x6027;&#x6709;&#x5145;&#x5206;&#x7684;&#x628A;&#x63E1;&#x548C;&#x7406;&#x89E3;. &#x4ECE;&#x800C;&#x8BA9;&#x5F88;&#x591A;&#x6295;&#x8D44;&#x8005;&#x4EA7;&#x751F;&#x4E86;&#x8D4C;&#x5F92;&#x7684;&#x5FC3;&#x6001;, &#x8BA9;&#x8FD9;&#x4E2A;&#x9886;&#x57DF;&#x5145;&#x6EE1;&#x4E86;&#x9A97;&#x5C40;,&#x592A;&#x591A;&#x7684;&#x9677;&#x9631;&#x5728;&#x7B49;&#x5F85;&#x6295;&#x8D44;&#x8005;&#xFF0C;&#x7136;&#x800C;&#x6295;&#x8D44;&#x8005;&#x5374;&#x603B;&#x662F;&#x62B1;&#x6709;&#x4FA5;&#x5E78;&#x7684;&#x5FC3;&#x6001;&#x5728;&#x6295;&#x8D44;&#x3002;</li>
+<li>&#x5C31;&#x5176;&#x672C;&#x8D28;&#x800C;&#x8A00;BTC&#x5E76;&#x6CA1;&#x6709;&#x7ED9;&#x4E16;&#x754C;&#x5E26;&#x6765;&#x4EFB;&#x4F55;&#x7684;&#x79D1;&#x6280;&#x6210;&#x679C;,&#x53EA;&#x662F;&#x7ED9;&#x4E16;&#x754C;&#x5E26;&#x6765;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x91D1;&#x878D;&#x6E38;&#x620F;&#x89C4;&#x5219;;&#x5404;&#x79CD;&#x4FDD;&#x9669;,&#x793E;&#x4FDD;&#x57FA;&#x91D1;&#x7B49;&#x4F55;&#x5C1D;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x8D44;&#x91D1;&#x6C60;&#x7684;&#x91D1;&#x878D;&#x6E38;&#x620F;&#x5462;? &#x4ED6;&#x4EEC;&#x7684;&#x7279;&#x70B9;&#x662F;&#x6CA1;&#x6709;&#x8D21;&#x732E;&#x4EFB;&#x4F55;&#x79D1;&#x6280;&#x6210;&#x529F;&#xFF0C;&#x53EA;&#x662F;&#x8BA9;&#x8D44;&#x91D1;&#x6D41;&#x8F6C;&#x6709;&#x4E2A;&#x66F4;&#x52A0;&#x5408;&#x7406;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x4ECE;&#x800C;&#x8BA9;&#x5927;&#x591A;&#x6570;&#x4EBA;&#x6536;&#x76CA;. &#x4EFB;&#x4F55;&#x91D1;&#x878D;&#x4EA7;&#x54C1;&#xFF0C;&#x53EA;&#x8981;&#x6709;&#x8D44;&#x91D1;&#x6C60;&#x5728;&#xFF0C;&#x5C3D;&#x7BA1;&#x6CA1;&#x6709;&#x521B;&#x9020;&#x4EFB;&#x4F55;&#x5B9E;&#x8D28;&#x7684;&#x52B3;&#x52A8;&#x6210;&#x679C;&#xFF0C;&#x4F46;&#x5374;&#x80FD;&#x8BA9;&#x6240;&#x6709;&#x53C2;&#x4E0E;&#x8005;&#x6536;&#x76CA;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E0D;&#x662F;&#x4E0E;&#x8D4C;&#x535A;&#x4E00;&#x6837;&#x7684;&#x96F6;&#x548C;&#x6E38;&#x620F;.</li>
+<li>&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x533A;&#x5757;&#x94FE;&#x4EA7;&#x54C1;&#xFF0C;&#x66F4;&#x5BB9;&#x6613;&#x8BA9;&#x6295;&#x8D44;&#x8005;&#x6536;&#x76CA;&#x5462;? &#x663E;&#x800C;&#x6613;&#x89C1;&#x9700;&#x8981;&#x89C4;&#x5219;&#x516C;&#x5E73;&#x5408;&#x7406;,&#x8D44;&#x91D1;&#x5B89;&#x5168;,&#x8D44;&#x91D1;&#x6C60;&#x5927;,&#x6709;&#x5927;&#x91CF;&#x5BF9;&#x89C4;&#x5219;&#x8BA4;&#x53EF;&#x7684;&#x5FE0;&#x5B9E;&#x7C89;&#x4E1D;, &#x624D;&#x662F;&#x503C;&#x5F97;&#x6295;&#x8D44;&#x7684;&#x4EA7;&#x54C1;&#x3002;&#x57FA;&#x4E8E;&#x4E0A;&#x9762;&#x7684;&#x8BA4;&#x77E5;&#xFF0C;MNT&#x793E;&#x533A;&#x8BBE;&#x8BA1;&#x4E86;&#x5982;&#x4E0B;&#x9879;&#x76EE;:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">&#x4E8B;&#x9879;</th>
+<th>MNB&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</th>
+<th>&#x4FDD;&#x9669;&#x516C;&#x53F8;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">&#x9879;&#x76EE;&#x89C4;&#x5219;</td>
+<td>&#x5408;&#x7EA6;&#x5F00;&#x6E90;&#x4E14;&#x4E0D;&#x53EF;&#x4FEE;&#x6539;</td>
+<td>&#x5408;&#x540C;&#x7684;&#x5F62;&#x5F0F;&#x53D1;&#x5E03;</td>
+</tr>
+<tr>
+<td style="text-align:right">&#x9879;&#x76EE;&#x5B89;&#x5168;</td>
+<td>BSC&#x6210;&#x719F;&#x533A;&#x5757;&#x94FE;&#x73AF;&#x5883;</td>
+<td>&#x5927;&#x516C;&#x53F8;&#x80CC;&#x4E66;</td>
+</tr>
+<tr>
+<td style="text-align:right">&#x8D44;&#x91D1;&#x5B89;&#x5168;</td>
+<td>BSC&#x6210;&#x719F;&#x91D1;&#x878D;&#x73AF;&#x5883;</td>
+<td>&#x5927;&#x516C;&#x53F8;&#x80CC;&#x4E66;</td>
+</tr>
+<tr>
+<td style="text-align:right">&#x8D44;&#x91D1;&#x6C60;&#x5927;&#x5C0F;</td>
+<td>&#x6D41;&#x52A8;&#x6027;&#x6316;&#x77FF;</td>
+<td>&#x5408;&#x7406;&#x7684;&#x89C4;&#x5219;</td>
+</tr>
+<tr>
+<td style="text-align:right">&#x793E;&#x533A;&#x5927;&#x5C0F;</td>
+<td>&#x63A8;&#x5E7F;&#x5373;&#x6316;&#x77FF;</td>
+<td>&#x5408;&#x7406;&#x7684;&#x89C4;&#x5219;</td>
+</tr>
+<tr>
+<td style="text-align:right">&#x4EF7;&#x503C;&#x7A33;&#x5B9A;&#x6027;</td>
+<td>&#x6295;&#x7968;&#x52A0;&#x7B97;&#x529B;&#xFF0C;&#x6295;&#x7968;&#x9501;&#x5B9A;</td>
+<td>&#x5BF9;&#x6807;&#x6CD5;&#x5E01;</td>
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="%E6%B5%81%E5%8A%A8%E6%80%A7%E6%8C%96%E7%9F%BF">&#x6D41;&#x52A8;&#x6027;&#x6316;&#x77FF;</h2>
+
+<ul>
+<li>&#x6D41;&#x52A8;&#x6027;&#x6316;&#x77FF;&#x91C7;&#x7528;MNB/USDT&#x4EA4;&#x6613;&#x5BF9;,&#x5BF9;&#x8BE5;&#x4EA4;&#x6613;&#x5BF9;&#x8D21;&#x732E;&#x4E86;&#x591A;&#x5C11;&#x8D44;&#x91D1;&#x6765;&#x786E;&#x5B9A;&#x6316;&#x77FF;&#x7B97;&#x529B;&#x7684;&#x5927;&#x5C0F;.&#x5728;&#x4EAB;&#x6709;uniswap&#x6316;&#x77FF;&#x6536;&#x76CA;&#x7684;&#x540C;&#x65F6;,&#x8FD8;&#x53EF;&#x4EE5;&#x4EAB;&#x6709;&#x5BF9;MNB&#x6316;&#x77FF;&#x7684;&#x6536;&#x76CA;.<br>
+uniswap&#x6316;&#x77FF;&#x7684;&#x6536;&#x76CA;&#x4E0E;&#x4EA4;&#x6613;&#x91D1;&#x989D;&#x603B;&#x91CF;&#x7684;&#x5927;&#x5C0F;&#x6210;&#x6B63;&#x6BD4;,MNB&#x6316;&#x77FF;&#x7684;&#x6536;&#x76CA;&#x4E0E;&#x65F6;&#x95F4;&#x7684;&#x957F;&#x77ED;&#x6210;&#x6B63;&#x6BD4;.</li>
+</ul>
+<blockquote>
+<ul>
+<li>&#x793A;&#x4F8B;:</li>
+</ul>
+<ol>
+<li>A&#x5BF9;MNB/USDT&#x5F00;&#x59CB;&#x6D41;&#x52A8;&#x6027;&#x6316;&#x77FF;,&#x63D0;&#x4F9B;&#x4E86;100&#x4E2A;MNB&#x91D1;&#x989D;.</li>
+<li>B&#x540C;&#x65F6;&#x4E5F;&#x5BF9;MNB/USDT&#x5F00;&#x59CB;&#x6D41;&#x52A8;&#x6027;&#x6316;&#x77FF;,&#x63D0;&#x4F9B;&#x4E86;200&#x4E2A;MNB&#x91D1;&#x989D;.</li>
+<li>&#x4E00;&#x5929;&#x540E;B&#x7684;&#x6536;&#x76CA;&#x662F;A&#x7684;&#x800C;2&#x500D;,&#x5047;&#x8BBE;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;A&#x7684;&#x6536;&#x76CA;&#x4E3A;10MNB&#xFF0C;B&#x7684;&#x6536;&#x76CA;&#x5219;&#x4E3A;20MNB.</li>
+<li>&#x5047;&#x8BBE;A&#x60F3;&#x8FBE;&#x5230;&#x4E0E;&#x76F8;&#x7B49;&#x7684;&#x6536;&#x76CA;,&#x5219;&#x9700;&#x8981;&#x7EE7;&#x7EED;&#x589E;&#x52A0;110MNB&#x7684;&#x6D41;&#x52A8;&#x6027;,&#x624D;&#x80FD;&#x8FBE;&#x5230;&#x4E0E;B&#x5B8C;&#x5168;&#x76F8;&#x7B49;&#x7684;&#x6536;&#x76CA;.</li>
+<li>&#x5982;&#x679C;&#x5728;&#x4E00;&#x5929;&#x524D;&#x4ED6;&#x53EA;&#x9700;&#x8981;&#x591A;&#x63D0;&#x4F9B;100MNB&#x7684;&#x6D41;&#x52A8;&#x6027;&#xFF0C;&#x5C31;&#x80FD;&#x8FBE;&#x5230;&#x4E0E;B&#x76F8;&#x540C;&#x7684;&#x6536;&#x76CA;.&#x8FD9;&#x5C31;&#x662F;&#x5BF9;MNB&#x6D41;&#x52A8;&#x6027;&#x6316;&#x77FF;&#x6700;&#x76F4;&#x89C2;&#x7684;&#x89E3;&#x91CA;.</li>
+</ol>
+</blockquote>
+<h2 class="mume-header" id="%E6%8E%A8%E5%B9%BF%E6%80%A7%E6%8C%96%E7%9F%BF">&#x63A8;&#x5E7F;&#x6027;&#x6316;&#x77FF;</h2>
+
+<ul>
+<li>A&#x63A8;&#x5E7F;B&#x7684;&#x4E24;&#x79CD;&#x60C5;&#x51B5;</li>
+</ul>
+<blockquote>
+<p>&#x6B63;&#x5E38;&#x63A8;&#x5E7F;</p>
+</blockquote>
+<div class="mermaid">graph TD
+A[A 1000MNB] --&gt; B[B 1000MNB]
+</div><blockquote>
+<p>&#x4E0B;&#x7EA7;&#x62C6;&#x5206;</p>
+</blockquote>
+<div class="mermaid">graph TD
+A[A 1000MNB] --&gt; B[B 500MNB]
+    B --&gt; B1[B1 500MNB]
+</div><ul>
+<li><s>&#x63A8;&#x5E7F;&#x5C31;&#x662F;&#x4E00;&#x68F5;&#x4E0D;&#x505C;&#x5411;&#x4E0B;&#x8513;&#x5EF6;&#x7684;&#x6811;,&#x5982;&#x679C;&#x4F7F;&#x7528;&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x505A;&#x63A8;&#x5E7F;,&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x63A8;&#x5E7F;&#x8005;&#x7684;&#x6536;&#x76CA;.</s></li>
+</ul>
+<blockquote>
+<ul>
+<li>&#x793A;&#x4F8B;1:</li>
+</ul>
+<ol>
+<li>A&#x63A8;&#x5E7F;&#x4E86;B&#xFF0C;&#x800C;B&#x5730;&#x5740;&#x6709;1000&#x4E2A;MNB.</li>
+<li>A&#x7684;&#x63A8;&#x5E7F;&#x503C;&#x4E3A;1000,B&#x7684;&#x63A8;&#x5E7F;&#x4E3A;0.</li>
+<li>B&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x8D26;&#x6237;B1&#xFF0C;&#x8BA9;B&#x548C;B1&#x5EFA;&#x7ACB;&#x63A8;&#x5E7F;&#x5173;&#x7CFB;&#xFF0C;&#x5E76;&#x628A;&#x91D1;&#x989D;&#x8F6C;&#x5230;B1&#x4E0A;.</li>
+<li>A&#x7684;&#x63A8;&#x5E7F;&#x503C;&#x4E3A;0&#xFF0C;B&#x63A8;&#x5E7F;&#x503C;1000&#xFF0C;B1&#x7684;&#x63A8;&#x5E7F;&#x503C;0&#xFF0C;&#x800C;A&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x63A8;&#x5E7F;&#x8005;&#xFF0C;&#x5374;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x6536;&#x76CA;.</li>
+</ol>
+</blockquote>
+<ul>
+<li><s>&#x5982;&#x679C;&#x628A;&#x63A8;&#x5E7F;&#x5173;&#x7CFB;&#x8C03;&#x6574;&#x4E3A;&#x4E0A;&#x4E0B;&#x7EA7;&#x4E4B;&#x95F4;&#x91D1;&#x989D;&#x7684;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x4E14;&#x4E00;&#x4E2A;&#x5730;&#x5740;&#x4E0E;&#x4E0A;&#x7EA7;&#x4E5F;&#x6709;&#x5173;&#x7CFB;&#xFF0C;&#x9632;&#x6B62;B&#x628A;&#x91D1;&#x989D;&#x5168;&#x90E8;&#x8F6C;&#x8D70;&#x3002;</s></li>
+</ul>
+<blockquote>
+<ul>
+<li>&#x793A;&#x4F8B;2&#xFF1A;</li>
+</ul>
+<ol>
+<li>&#x5047;&#x8BBE;A&#x63A8;&#x5E7F;&#x4E86;B&#xFF0C;&#x4ED6;&#x4EEC;&#x624B;&#x4E2D;&#x90FD;&#x6709;1000&#x4E2A;MNB.</li>
+<li>A&#x589E;&#x52A0;&#x7684;&#x63A8;&#x5E7F;&#x503C;&#x4E3A;1000&#xFF0C;B&#x7684;&#x63A8;&#x5E7F;&#x503C;&#x4E5F;&#x4E3A;1000.</li>
+<li>B&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x8D26;&#x6237;B1&#xFF0C;&#x5E76;&#x628A;1000&#x4E2A;MNB&#x8F6C;&#x7ED9;B1&#xFF0C;&#x8FD9;&#x6837;&#x4E24;&#x4E2A;&#x4EBA;&#x7684;&#x6536;&#x76CA;&#x90FD;&#x662F;0&#xFF0C;B&#x663E;&#x7136;&#x4E0D;&#x4F1A;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x5982;&#x679C;&#x628A;500&#x7684;MNB&#x8F6C;&#x7ED9;B1&#xFF0C;</li>
+<li>A&#x589E;&#x52A0;&#x7684;&#x63A8;&#x5E7F;&#x503C;&#x4E3A;500<br>
+B&#x7684;&#x63A8;&#x5E7F;&#x503C;&#x4E3A;500+500=1000<br>
+B1&#x7684;&#x63A8;&#x5E7F;&#x503C;&#x4E3A;500<br>
+B&#x8D26;&#x6237;&#x7684;&#x5168;&#x90E8;&#x63A8;&#x5E7F;&#x503C;&#x4E3A;1000+500=1500&#xFF0C;&#x521B;&#x5EFA;B1&#x8D26;&#x6237;&#x540E;&#xFF0C;&#x8BA9;&#x4E0A;&#x7EA7;&#x7684;&#x63A8;&#x5E7F;&#x51CF;&#x5C11;&#x4E86;500&#xFF0C;&#x800C;&#x81EA;&#x5DF1;&#x589E;&#x52A0;&#x4E86;500&#xFF0C;&#x8FD9;&#x4E2A;&#x89C4;&#x5219;&#x867D;&#x7136;&#x6BD4;&#x793A;&#x4F8B;1&#x597D;&#x5F88;&#x591A;&#xFF0C;&#x4F46;&#x662F;&#x4F9D;&#x7136;&#x5BF9;&#x63A8;&#x5E7F;&#x8005;&#x6709;&#x5229;&#x76CA;&#x635F;&#x5931;&#x3002;</li>
+</ol>
+</blockquote>
+<ul>
+<li><em>&#x9488;&#x5BF9;&#x4E0A;&#x9762;&#x7684;&#x63A8;&#x5E7F;&#x96BE;&#x9898;,&#x63D0;&#x51FA;&#x4E86;&#x975E;&#x7EBF;&#x6027;&#x7B97;&#x6CD5;&#xFF0C;&#x6BCF;&#x4E2A;&#x8D26;&#x6237;&#x7684;&#x57FA;&#x672C;&#x7B97;&#x529B;&#x7B49;&#x4E8E;&#x6295;&#x7968;&#x91D1;&#x989D;&#x7684;<strong>1.125&#x6B21;&#x65B9;</strong>&#xFF0C;&#x81EA;&#x5DF1;&#x7684;&#x63A8;&#x5E7F;&#x7B97;&#x529B;&#x4E0E;&#x4E0B;&#x7EA7;&#x7684;&#x6743;&#x91CD;&#x4E3A;<strong>1</strong>, &#x4E0E;&#x4E0A;&#x7EA7;&#x7684;&#x6743;&#x91CD;&#x4E3A;<strong>2</strong>&#xFF0C;&#x81EA;&#x8EAB;&#x7684;&#x6743;&#x91CD;&#x4E3A;<strong>4</strong>&#x3002;</em></li>
+</ul>
+<blockquote>
+<ul>
+<li><strong>&#x8BA1;&#x7B97;&#x65B9;&#x6CD5;</strong><br>
+<strong>&#x57FA;&#x672C;&#x7B97;&#x529B;:</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="2.488em"><mi>p</mi><mi>o</mi><mi>w</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>1.125</mn></msup><mo>=</mo><msup><mi>x</mi><mrow><mn>9</mn><mi mathvariant="normal">/</mi><mn>8</mn></mrow></msup><mo>=</mo><mi>x</mi><mo>&#x2217;</mo><mroot><mi>x</mi><mn>8</mn></mroot></mstyle></mrow><annotation encoding="application/x-tex">\Huge pow(x) = x^{1.125} = x^{9/8} = x * \sqrt[8]{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.488em;vertical-align:-0.622em;"></span><span class="mord mathnormal sizing reset-size6 size11">p</span><span class="mord mathnormal sizing reset-size6 size11">o</span><span class="mord mathnormal sizing reset-size6 size11" style="margin-right:0.02691em;">w</span><span class="mopen sizing reset-size6 size11">(</span><span class="mord mathnormal sizing reset-size6 size11">x</span><span class="mclose sizing reset-size6 size11">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel sizing reset-size6 size11">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2397em;"></span><span class="mord sizing reset-size6 size11"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9002em;"><span style="top:-4.437em;margin-right:0.0201em;"><span class="pstrut" style="height:4.074em;"></span><span class="sizing reset-size11 size10 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel sizing reset-size6 size11">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4586em;"></span><span class="mord sizing reset-size6 size11"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9882em;"><span style="top:-4.437em;margin-right:0.0201em;"><span class="pstrut" style="height:4.074em;"></span><span class="sizing reset-size11 size10 mtight"><span class="mord mtight"><span class="mord mtight">9/8</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel sizing reset-size6 size11">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1576em;"></span><span class="mord mathnormal sizing reset-size6 size11">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin sizing reset-size6 size11">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.5875em;vertical-align:-0.5964em;"></span><span class="mord sqrt sizing reset-size6 size11"><span class="root"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7839em;"><span style="top:-4.0643em;"><span class="pstrut" style="height:3.728em;"></span><span class="sizing reset-size11 size9 mtight"><span class="mord mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8003em;"><span class="svg-align" style="top:-4.488em;"><span class="pstrut" style="height:4.488em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal">x</span></span></span><span style="top:-4.2483em;"><span class="pstrut" style="height:4.488em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2397em;"><span></span></span></span></span></span></span></span></span><br>
+<strong>&#x5B9E;&#x9645;&#x7B97;&#x529B;:</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="2.488em"><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mo>&#x2217;</mo><mi>p</mi><mi>o</mi><mi>w</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>+</mo><mn>2</mn><mo>&#x2217;</mo><mi>min</mi><mo>&#x2061;</mo><mo stretchy="false">(</mo><mi>p</mi><mi>o</mi><mi>w</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>p</mi><mi>o</mi><mi>w</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mi>u</mi><mi>p</mi></mrow></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>+</mo><mo>&#x2211;</mo><mo stretchy="false">(</mo><mi>min</mi><mo>&#x2061;</mo><mo stretchy="false">(</mo><mi>p</mi><mi>o</mi><mi>w</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>p</mi><mi>o</mi><mi>w</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mi>d</mi><mi>o</mi><mi>w</mi><mi>n</mi></mrow></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mstyle></mrow><annotation encoding="application/x-tex">\Huge f(x) = 4 * pow(x) + 2 * \min(pow(x),pow(x_{up})) + \sum(\min(pow(x),pow(x_{down})))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.488em;vertical-align:-0.622em;"></span><span class="mord mathnormal sizing reset-size6 size11" style="margin-right:0.10764em;">f</span><span class="mopen sizing reset-size6 size11">(</span><span class="mord mathnormal sizing reset-size6 size11">x</span><span class="mclose sizing reset-size6 size11">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel sizing reset-size6 size11">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.6034em;"></span><span class="mord sizing reset-size6 size11">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin sizing reset-size6 size11">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.488em;vertical-align:-0.622em;"></span><span class="mord mathnormal sizing reset-size6 size11">p</span><span class="mord mathnormal sizing reset-size6 size11">o</span><span class="mord mathnormal sizing reset-size6 size11" style="margin-right:0.02691em;">w</span><span class="mopen sizing reset-size6 size11">(</span><span class="mord mathnormal sizing reset-size6 size11">x</span><span class="mclose sizing reset-size6 size11">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin sizing reset-size6 size11">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.6034em;"></span><span class="mord sizing reset-size6 size11">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin sizing reset-size6 size11">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.6425em;vertical-align:-0.7765em;"></span><span class="mop sizing reset-size6 size11">min</span><span class="mopen sizing reset-size6 size11">(</span><span class="mord mathnormal sizing reset-size6 size11">p</span><span class="mord mathnormal sizing reset-size6 size11">o</span><span class="mord mathnormal sizing reset-size6 size11" style="margin-right:0.02691em;">w</span><span class="mopen sizing reset-size6 size11">(</span><span class="mord mathnormal sizing reset-size6 size11">x</span><span class="mclose sizing reset-size6 size11">)</span><span class="mpunct sizing reset-size6 size11">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal sizing reset-size6 size11">p</span><span class="mord mathnormal sizing reset-size6 size11">o</span><span class="mord mathnormal sizing reset-size6 size11" style="margin-right:0.02691em;">w</span><span class="mopen sizing reset-size6 size11">(</span><span class="mord sizing reset-size6 size11"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2089em;"><span style="top:-3.924em;margin-left:0em;margin-right:0.0201em;"><span class="pstrut" style="height:4.074em;"></span><span class="sizing reset-size11 size10 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.3121em;"><span></span></span></span></span></span></span><span class="mclose sizing reset-size6 size11">))</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin sizing reset-size6 size11">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.488em;vertical-align:-0.622em;"></span><span class="mop op-symbol small-op sizing reset-size6 size11" style="position:relative;top:0em;">&#x2211;</span><span class="mopen sizing reset-size6 size11">(</span><span class="mop sizing reset-size6 size11">min</span><span class="mopen sizing reset-size6 size11">(</span><span class="mord mathnormal sizing reset-size6 size11">p</span><span class="mord mathnormal sizing reset-size6 size11">o</span><span class="mord mathnormal sizing reset-size6 size11" style="margin-right:0.02691em;">w</span><span class="mopen sizing reset-size6 size11">(</span><span class="mord mathnormal sizing reset-size6 size11">x</span><span class="mclose sizing reset-size6 size11">)</span><span class="mpunct sizing reset-size6 size11">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal sizing reset-size6 size11">p</span><span class="mord mathnormal sizing reset-size6 size11">o</span><span class="mord mathnormal sizing reset-size6 size11" style="margin-right:0.02691em;">w</span><span class="mopen sizing reset-size6 size11">(</span><span class="mord sizing reset-size6 size11"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-3.8399em;margin-left:0em;margin-right:0.0201em;"><span class="pstrut" style="height:4.074em;"></span><span class="sizing reset-size11 size10 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2341em;"><span></span></span></span></span></span></span><span class="mclose sizing reset-size6 size11">)))</span></span></span></span></li>
+<li>&#x793A;&#x4F8B;3&#xFF1A;</li>
+</ul>
+<ol>
+<li>A&#x63A8;&#x5E7F;&#x4E86;B&#xFF0C;A&#x548C;B&#x5730;&#x5740;&#x4E2D;&#x5206;&#x522B;&#x6709;1000&#x4E2A;MNB.</li>
+<li>A&#x589E;&#x52A0;&#x7684;&#x7B97;&#x529B;&#x4E3A;: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100</mn><msup><mn>0</mn><mn>1.125</mn></msup><mo>&#x2248;</mo><mn>2371.37</mn></mrow><annotation encoding="application/x-tex">1000^{1.125} \approx 2371.37</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">100</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2248;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2371.37</span></span></span></span></li>
+<li>B&#x5730;&#x5740;&#x7B97;&#x529B;&#x4E3A;:   <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2371.37</mn><mo>&#x2217;</mo><mn>2</mn><mo>+</mo><mn>2371.37</mn><mo>&#x2217;</mo><mn>4</mn><mo>=</mo><mn>14228.22</mn></mrow><annotation encoding="application/x-tex">2371.37 * 2 + 2371.37 * 4 = 14228.22</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2371.37</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2371.37</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">14228.22</span></span></span></span></li>
+<li>B&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x8D26;&#x6237;B1&#xFF0C;&#x5E76;&#x7ED9;B1&#x8F6C;&#x4E86;500MNB.</li>
+<li>A&#x5730;&#x5740;&#x589E;&#x52A0;&#x7684;&#x7B97;&#x529B;&#x4E3A;: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>50</mn><msup><mn>0</mn><mn>1.125</mn></msup><mo>&#x2248;</mo><mn>1087.28</mn></mrow><annotation encoding="application/x-tex">500^{1.125} \approx 1087.28</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">50</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2248;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1087.28</span></span></span></span></li>
+<li>B&#x5730;&#x5740;&#x7B97;&#x529B;&#x4E3A;:      <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1087.28</mn><mo>&#x2217;</mo><mn>2</mn><mo>+</mo><mn>1087.28</mn><mo>&#x2217;</mo><mn>4</mn><mo>+</mo><mn>1087.28</mn><mo>=</mo><mn>7610.96</mn></mrow><annotation encoding="application/x-tex">1087.28 * 2 + 1087.28 * 4 + 1087.28 = 7610.96</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1087.28</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1087.28</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1087.28</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7610.96</span></span></span></span></li>
+<li>B1&#x5730;&#x5740;&#x7B97;&#x529B;&#x4E3A;:     <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1087.28</mn><mo>&#x2217;</mo><mn>2</mn><mo>+</mo><mn>1087.28</mn><mo>&#x2217;</mo><mn>4</mn><mo>=</mo><mn>6523.68</mn></mrow><annotation encoding="application/x-tex">1087.28 * 2 + 1087.28 * 4 = 6523.68</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1087.28</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1087.28</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6523.68</span></span></span></span></li>
+<li>B&#x8D26;&#x6237;&#x7684;&#x603B;&#x7B97;&#x529B;&#x4E3A;:   <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7610.96</mn><mo>+</mo><mn>6523.68</mn><mo>=</mo><mn>14134.64</mn></mrow><annotation encoding="application/x-tex">7610.96 + 6523.68 = 14134.64</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">7610.96</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6523.68</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">14134.64</span></span></span></span></li>
+<li>B&#x7684;&#x62C6;&#x5206;&#x540E;&#x7684;&#x7B97;&#x529B;&#x5C0F;&#x4E8E;&#x62C6;&#x5206;&#x524D;&#xFF0C;&#x5BF9;&#x63A8;&#x5E7F;&#x8005;A&#x6784;&#x6210;&#x4E86;&#x635F;&#x5931;&#xFF0C;&#x5BF9;&#x81EA;&#x5DF1;&#x4E5F;&#x6784;&#x6210;&#x4E86;&#x635F;&#x5931;&#xFF0C;&#x56E0;&#x6B64;A&#x6CA1;&#x6709;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x52A8;&#x529B;.</li>
+</ol>
+</blockquote>
+<h3 class="mume-header" id="%E5%9C%B0%E5%9D%80%E7%AD%89%E7%BA%A7%E5%88%B6">&#x5730;&#x5740;&#x7B49;&#x7EA7;&#x5236;</h3>
+
+<p>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x89C4;&#x5219;&#x4E0D;&#x96BE;&#x770B;&#x51FA;&#xFF0C;&#x6295;&#x7968;&#x8D8A;&#x591A;&#x5BF9;&#x81EA;&#x5DF1;&#x7684;&#x7B97;&#x529B;&#x8D8A;&#x6709;&#x529B;&#xFF0C;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x6295;&#x7968;&#x91CF;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x51FA;&#x8D44;&#x91D1;&#x653E;&#x5927;&#x7CFB;&#x6570;&#xFF0C;&#x6839;&#x636E;&#x653E;&#x5927;&#x7CFB;&#x6570;&#x5B9A;&#x4E49;&#x4E86;&#x5730;&#x5740;&#x7B49;&#x7EA7;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">&#x6295;&#x7968;&#x91CF;</th>
+<th>&#x7B97;&#x529B;</th>
+<th>&#x653E;&#x5927;&#x7CFB;&#x6570;</th>
+<th>&#x7B49;&#x7EA7;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>1</mn><mn>8</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1^8=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">1</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>1</mn><mn>1.125</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1^{1.125}=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">1</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></td>
+<td>1</td>
+<td>&#x9752;&#x94DC;(0&#x2264;k&lt;1)</td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>8</mn></msup><mo>=</mo><mn>256</mn></mrow><annotation encoding="application/x-tex">2^8=256</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">256</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>25</mn><msup><mn>6</mn><mn>1.125</mn></msup><mo>=</mo><mn>512</mn></mrow><annotation encoding="application/x-tex">256^{1.125}=512</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">25</span><span class="mord"><span class="mord">6</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">512</span></span></span></span></td>
+<td>2</td>
+<td>&#x9752;&#x94DC;(1&#x2264;k&lt;2)</td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>3</mn><mn>8</mn></msup><mo>=</mo><mn>6561</mn></mrow><annotation encoding="application/x-tex">3^8=6561</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">3</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6561</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>656</mn><msup><mn>1</mn><mn>1.125</mn></msup><mo>=</mo><mn>19683</mn></mrow><annotation encoding="application/x-tex">6561^{1.125}=19683</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">656</span><span class="mord"><span class="mord">1</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">19683</span></span></span></span></td>
+<td>3</td>
+<td>&#x767D;&#x94F6;(2&#x2264;k&lt;3)</td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>4</mn><mn>8</mn></msup><mo>=</mo><mn>65536</mn></mrow><annotation encoding="application/x-tex">4^8=65536</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">4</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">65536</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6553</mn><msup><mn>6</mn><mn>1.125</mn></msup><mo>=</mo><mn>262144</mn></mrow><annotation encoding="application/x-tex">65536^{1.125}=262144</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">6553</span><span class="mord"><span class="mord">6</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">262144</span></span></span></span></td>
+<td>4</td>
+<td>&#x9EC4;&#x91D1;(3&#x2264;k&lt;4)</td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>5</mn><mn>8</mn></msup><mo>=</mo><mn>390625</mn></mrow><annotation encoding="application/x-tex">5^8=390625</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">5</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">390625</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>39062</mn><msup><mn>5</mn><mn>1.125</mn></msup><mo>=</mo><mn>1953125</mn></mrow><annotation encoding="application/x-tex">390625^{1.125}=1953125</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">39062</span><span class="mord"><span class="mord">5</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1953125</span></span></span></span></td>
+<td>5</td>
+<td>&#x94C2;&#x91D1;(4&#x2264;k&lt;5)</td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>6</mn><mn>8</mn></msup><mo>=</mo><mn>1679616</mn></mrow><annotation encoding="application/x-tex">6^8=1679616</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">6</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1679616</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>167961</mn><msup><mn>6</mn><mn>1.125</mn></msup><mo>=</mo><mn>10077696</mn></mrow><annotation encoding="application/x-tex">1679616^{1.125}=10077696</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">167961</span><span class="mord"><span class="mord">6</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10077696</span></span></span></span></td>
+<td>6</td>
+<td>&#x94BB;&#x77F3;(5&#x2264;k&lt;6)</td>
+</tr>
+<tr>
+<td style="text-align:right">&#x5927;&#x4E8E;6**8</td>
+<td>&#x5927;&#x4E8E;10077696</td>
+<td>6</td>
+<td>&#x94BB;&#x77F3;(5&#x2264;k&lt;6)</td>
+</tr>
+</tbody>
+</table>
+<p>&#x4ECE;&#x4E0A;&#x9762;&#x4E0D;&#x96BE;&#x770B;&#x51FA;&#x5728;&#x975E;&#x7EBF;&#x6027;&#x7B97;&#x6CD5;&#x7684;&#x4F5C;&#x7528;&#x4E0B;&#xFF0C;&#x6295;&#x7968;&#x8D8A;&#x591A;&#x5BF9;&#x81EA;&#x5DF1;&#x7684;&#x7B97;&#x529B;&#x8D8A;&#x6709;&#x5229;,&#x4F46;&#x662F;&#x5927;&#x4E8E;1679616&#x540E;&#x8FD9;&#x4E2A;&#x4F18;&#x52BF;&#x6D88;&#x5931;.</p>
+<h3 class="mume-header" id="%E7%AE%97%E5%8A%9B%E6%8C%96%E7%9F%BF%E6%94%B6%E7%9B%8A%E5%88%86%E9%85%8D">&#x7B97;&#x529B;&#x6316;&#x77FF;&#x6536;&#x76CA;&#x5206;&#x914D;</h3>
+
+<ul>
+<li>&#x63A8;&#x5E7F;&#x6027;&#x6316;&#x77FF;&#x6BCF;&#x6708;&#x4E3A;&#x4E00;&#x4E2A;&#x5468;&#x671F;&#xFF0C;&#x4E0E;&#x6D41;&#x52A8;&#x6027;&#x6316;&#x77FF;&#x4E0D;&#x540C;&#xFF0C;&#x6D41;&#x52A8;&#x6027;&#x6316;&#x77FF;&#x6CA1;&#x6709;&#x5468;&#x671F;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x7684;&#x8FDB;&#x5165;&#x548C;&#x9000;&#x51FA;&#xFF0C;&#x7CFB;&#x7EDF;&#x4E3A;&#x4E86;&#x9F13;&#x52B1;&#x793E;&#x533A;&#x66F4;&#x597D;&#x7684;&#x63A8;&#x5E7F;&#xFF0C;&#x6BCF;&#x6B21;&#x6316;&#x77FF;&#x7684;&#x91D1;&#x989D;&#x7684;80%&#x5F52;&#x81EA;&#x5DF1;&#x6240;&#x6709;&#xFF0C;20%&#x7528;&#x4E8E;&#x5956;&#x52B1;&#x4E0A;&#x7EA7;&#x3002;<br>
+&#x793A;&#x4F8B;:</li>
+</ul>
+<blockquote>
+<p>A&#x63A8;&#x5E7F;B,B&#x63A8;&#x5E7F;C,C&#x63A8;&#x5E7F;D,D&#x63A8;&#x5E7F;E.</p>
+</blockquote>
+<div class="mermaid">graph TD
+A[A 1000MNB] --&gt; B[B 2000MNB]
+B[B 2000MNB] --&gt; C[C 200MNB]
+C[C 200MNB]  --&gt; D[D 1000MNB]
+D[D 1000MNB] --&gt; E[E 1000MNB]
+</div><p>&#x5047;&#x8BBE;E&#x6316;&#x77FF;&#x6536;&#x76CA;&#x4E3A;100MNB&#xFF0C;&#x5219;80&#x4E2A;MNB&#x8FDB;&#x5165;E&#x7684;&#x5730;&#x5740;.<br>
+&#x603B;&#x6743;&#x91CD;: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100</mn><msup><mn>0</mn><mn>1.125</mn></msup><mo>+</mo><mn>200</mn><msup><mn>0</mn><mn>1.125</mn></msup><mo>+</mo><mn>20</mn><msup><mn>0</mn><mn>1.125</mn></msup><mo>+</mo><mn>100</mn><msup><mn>0</mn><mn>1.125</mn></msup><mo>&#x2248;</mo><mn>10302.6</mn></mrow><annotation encoding="application/x-tex">1000^{1.125} + 2000^{1.125} + 200^{1.125} + 1000^{1.125} \approx 10302.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">100</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">200</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">20</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">100</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2248;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10302.6</span></span></span></span><br>
+&#x53E6;&#x5916;&#x5916;20&#x4E2A;MNB&#x7684;&#x5206;&#x5E03;&#x5982;&#x4E0B;:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">&#x5730;&#x5740;</th>
+<th>&#x57FA;&#x672C;&#x7B97;&#x529B;</th>
+<th>&#x6743;&#x91CD;&#x6BD4;</th>
+<th>&#x6536;&#x76CA;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">A</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100</mn><msup><mn>0</mn><mn>1.125</mn></msup><mo>&#x2248;</mo><mn>2371.37</mn></mrow><annotation encoding="application/x-tex">1000^{1.125} \approx 2371.37</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">100</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2248;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2371.37</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2371.37</mn><mi mathvariant="normal">/</mi><mn>10302.6</mn><mo>=</mo><mn>0.23</mn></mrow><annotation encoding="application/x-tex">2371.37/10302.6=0.23</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2371.37/10302.6</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.23</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn><mo>&#x2217;</mo><mn>0.23</mn><mo>=</mo><mn>4.6</mn></mrow><annotation encoding="application/x-tex">20*0.23=4.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.23</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4.6</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:right">B</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>200</mn><msup><mn>0</mn><mn>1.125</mn></msup><mo>&#x2248;</mo><mn>5172.00</mn></mrow><annotation encoding="application/x-tex">2000^{1.125} \approx 5172.00</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">200</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2248;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5172.00</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5172.00</mn><mi mathvariant="normal">/</mi><mn>10302.6</mn><mo>=</mo><mn>0.502</mn></mrow><annotation encoding="application/x-tex">5172.00/10302.6=0.502</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5172.00/10302.6</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.502</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn><mo>&#x2217;</mo><mn>0.502</mn><mo>=</mo><mn>10.04</mn></mrow><annotation encoding="application/x-tex">20*0.502=10.04</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.502</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10.04</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:right">C</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn><msup><mn>0</mn><mn>1.125</mn></msup><mo>&#x2248;</mo><mn>387.85</mn></mrow><annotation encoding="application/x-tex">200^{1.125} \approx 387.85</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">20</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2248;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">387.85</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>387.85</mn><mi mathvariant="normal">/</mi><mn>10302.6</mn><mo>=</mo><mn>0.376</mn></mrow><annotation encoding="application/x-tex">387.85/10302.6=0.376</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">387.85/10302.6</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.376</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn><mo>&#x2217;</mo><mn>0.0376</mn><mo>=</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">20*0.0376=0.75</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.0376</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.75</span></span></span></span>,<strong>&#x56E0;&#x4E3A;&#x7B49;&#x7EA7;&#x4E3A;&#x9752;&#x94DC;&#x5B9E;&#x9645;&#x6536;&#x76CA;0</strong></td>
+</tr>
+<tr>
+<td style="text-align:right">D</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100</mn><msup><mn>0</mn><mn>1.125</mn></msup><mo>&#x2248;</mo><mn>2371.37</mn></mrow><annotation encoding="application/x-tex">1000^{1.125} \approx 2371.37</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">100</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.125</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2248;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2371.37</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2371.37</mn><mi mathvariant="normal">/</mi><mn>10302.6</mn><mo>=</mo><mn>0.23</mn></mrow><annotation encoding="application/x-tex">2371.37/10302.6=0.23</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2371.37/10302.6</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.23</span></span></span></span></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn><mo>&#x2217;</mo><mn>0.23</mn><mo>=</mo><mn>4.6</mn></mrow><annotation encoding="application/x-tex">20*0.23=4.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.23</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4.6</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>&#x901A;&#x8FC7;&#x4EE5;&#x4E0A;&#x6570;&#x636E;&#x4E0D;&#x96BE;&#x5F97;&#x51FA;&#xFF1A;&#x65E0;&#x8BBA;&#x662F;&#x76F4;&#x63A5;&#x4E0B;&#x7EA7;&#x6316;&#x77FF;&#xFF0C;&#x8FD8;&#x662F;&#x95F4;&#x63A5;&#x4E0B;&#x7EA7;&#x6316;&#x77FF;&#xFF0C;&#x90FD;&#x4F1A;&#x6709;&#x6536;&#x76CA;&#xFF0C;&#x5E76;&#x4E14;&#x6295;&#x7968;&#x8D8A;&#x591A;&#x6536;&#x76CA;&#x8D8A;&#x5927;&#xFF0C;&#x62C6;&#x5206;&#x8D26;&#x6237;&#x5BF9;&#x81EA;&#x5DF1;&#x66F4;&#x662F;&#x5E26;&#x6765;&#x635F;&#x5931;&#x3002;<br>
+&#x60F3;&#x63D0;&#x9AD8;&#x6536;&#x76CA;&#x5C31;&#x53EA;&#x80FD;&#x591A;&#x6295;&#x7968;&#xFF0C;&#x591A;&#x63A8;&#x5E7F;,&#x5982;&#x679C;&#x60F3;&#x83B7;&#x5F97;&#x88AB;&#x52A8;&#x6316;&#x77FF;&#x6536;&#x76CA;&#x6295;&#x7968;<strong>&#x4E0D;&#x80FD;&#x4F4E;&#x4E8E;256MNB</strong>.</p>
+<h2 class="mume-header" id="mnb%E5%88%86%E5%B8%83">MNB&#x5206;&#x5E03;</h2>
+
+<ul>
+<li>&#x521B;&#x4E16;100&#x4E07;MNB</li>
+<li>&#x6D41;&#x52A8;&#x6027;&#x6316;&#x77FF;&#x6BCF;&#x5206;&#x949F;1MNB</li>
+<li>&#x7B97;&#x529B;&#x63A8;&#x5E7F;&#x6027;&#x6316;&#x77FF;&#x6BCF;&#x5206;&#x949F;&#x6316;&#x77FF;1MNB&#xFF0C;</li>
+<li>&#x603B;&#x548C;&#x6BCF;&#x5206;&#x949F;&#x4EA7;&#x751F;2&#x4E2A;MNB, &#x6316;&#x77FF;20&#x5E74;&#x4E3A;21035520MNB&#xFF0C;&#x4E0E;BTC&#x7684;&#x6316;&#x77FF;&#x603B;&#x4EA7;&#x91CF;&#x76F8;&#x5F53;.</li>
+</ul>
+<h2 class="mume-header" id="%E5%9C%A8bsc%E4%B8%8A">&#x5728;BSC&#x4E0A;</h2>
+
+<ul>
+<li>&#x9879;&#x76EE;&#x98CE;&#x9669;&#x4F4E;,&#x6280;&#x672F;&#x98CE;&#x9669;&#x4F4E;</li>
+<li>&#x91D1;&#x878D;&#x73AF;&#x5883;&#x597D;,&#x6709;USDT,BNB&#x7B49;</li>
+<li>&#x624B;&#x7EED;&#x8D39;&#x7528;&#x4F4E;</li>
+<li>&#x5B89;&#x5168;&#x7684;&#x8FDB;&#x573A;&#x548C;&#x79BB;&#x573A;</li>
+<li>&#x7EFC;&#x4E0A;&#x964D;&#x4F4E;&#x4E86;&#x6295;&#x8D44;&#x8005;&#x7684;&#x98CE;&#x9669;</li>
+</ul>
+<h2 class="mume-header" id="%E9%BB%91%E5%AE%A2%E6%94%BB%E5%87%BB">&#x9ED1;&#x5BA2;&#x653B;&#x51FB;</h2>
+
+<ul>
+<li>&#x6807;&#x51C6;&#x7684;ERC20&#x9879;&#x76EE;&#xFF0C;&#x5982;&#x679C;&#x52A9;&#x8BB0;&#x8BCD;&#x6CC4;&#x6F0F;&#x540E;&#xFF0C;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x4EE3;&#x5E01;&#x8F6C;&#x51FA;&#x5373;&#x53EF;&#xFF0C;&#x6709;&#x635F;&#x5931;&#x4E5F;&#x662F;&#x4E00;&#x6B21;&#x6027;&#x7684;&#xFF0C;&#x800C;&#x5728;&#x672C;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x52A9;&#x8BB0;&#x8BCD;&#x6CC4;&#x6F0F;&#x540E;&#xFF0C;&#x56E0;&#x4E3A;&#x505A;&#x4E86;&#x5F88;&#x591A;&#x63A8;&#x5E7F;&#xFF0C;<br>
+&#x5E26;&#x6765;&#x7684;&#x635F;&#x5931;&#x662F;&#x957F;&#x4E45;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x7CFB;&#x7EDF;&#x901A;&#x8FC7;&#x4E0A;&#x7EA7;&#x63D0;&#x4F9B;&#x4E86;&#x5730;&#x5740;&#x66F4;&#x6362;&#x673A;&#x5236;&#x3002;</li>
+</ul>
+<blockquote>
+<p>&#x793A;&#x4F8B;:</p>
+<ol>
+<li>A&#x63A8;&#x5E7F;&#x4E86;B&#xFF0C;B&#x4E5F;&#x505A;&#x4E86;&#x5F88;&#x591A;&#x63A8;&#x5E7F;&#xFF0C;</li>
+<li>B&#x4E0D;&#x5C0F;&#x5FC3;&#x628A;&#x52A9;&#x8BB0;&#x8BCD;&#x6CC4;&#x6F0F;&#x4E86;&#xFF0C;&#x8003;&#x8651;&#x5230;&#x5730;&#x5740;&#x4E0D;&#x5728;&#x5B89;&#x5168;&#xFF0C;B&#x60F3;&#x6362;&#x6389;&#x5730;&#x5740;&#x3002;</li>
+<li>B&#x751F;&#x6210;&#x65B0;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x539F;&#x6765;&#x7684;&#x94B1;&#x5305;&#x5BF9;&#x65B0;&#x5730;&#x5740;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#xFF0C;&#x628A;&#x7B7E;&#x540D;&#x53D1;&#x7ED9;&#x4E0A;&#x7EA7;A&#x3002;</li>
+<li>A&#x901A;&#x8FC7;B&#x53D1;&#x6765;&#x7684;&#x7B7E;&#x540D;&#x6570;&#x636E;&#xFF0C;&#x628A;B&#x7684;&#x5730;&#x5740;&#x6362;&#x6210;B&#x63D0;&#x4F9B;&#x7684;&#x65B0;&#x5730;&#x5740;&#x3002;</li>
+<li>&#x5F97;&#x5230;B&#x52A9;&#x8BB0;&#x8BCD;&#x7684;&#x9ED1;&#x5BA2;&#xFF0C;&#x56E0;&#x4E3A;&#x548C;A&#x6CA1;&#x6709;&#x5173;&#x7CFB;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x80FD;&#x6267;&#x884C;&#x4E0A;&#x9762;&#x7684;&#x64CD;&#x4F5C;&#x3002;</li>
+</ol>
+</blockquote>
+<h2 class="mume-header" id="%E6%8C%96%E7%9F%BF%E9%A3%8E%E9%99%A9">&#x6316;&#x77FF;&#x98CE;&#x9669;</h2>
+
+<ul>
+<li>&#x63D0;&#x4F9B;&#x6D41;&#x52A8;&#x6027;&#x65F6;&#x4F7F;&#x7528;MNB&#x7CFB;&#x7EDF;&#xFF0C;&#x800C;&#x5728;&#x79FB;&#x9664;&#x6D41;&#x52A8;&#x6027;&#x65F6;&#x4F7F;&#x7528;uniswap&#x7CFB;&#x7EDF;&#xFF0C;&#x5C06;&#x4F1A;&#x5BFC;&#x81F4;&#x6316;&#x77FF;&#x98CE;&#x9669;&#xFF0C;&#x6536;&#x76CA;&#x88AB;&#x5176;&#x4ED6;&#x4EBA;&#x62FF;&#x8D70;.</li>
+<li>&#x6B63;&#x786E;&#x7684;&#x505A;&#x6CD5;&#x4F7F;&#x7528;MNB&#x63D0;&#x4F9B;&#x6D41;&#x52A8;&#x6027;&#xFF0C;&#x4F7F;&#x7528;MNB&#x79FB;&#x9664;&#x6D41;&#x52A8;&#x6027;&#xFF0C;&#x662F;&#x5229;&#x76CA;&#x6700;&#x5927;&#x5316;&#x7684;&#x505A;&#x6CD5;.</li>
+</ul>
+<h2 class="mume-header" id="%E5%8F%91%E5%B1%95%E6%80%9D%E8%B7%AF">&#x53D1;&#x5C55;&#x601D;&#x8DEF;</h2>
+
+<ul>
+<li>lp&#x6316;&#x77FF;&#x4FDD;&#x8BC1;&#x91D1;&#x878D;&#x5C5E;&#x6027;.</li>
+<li>&#x7B97;&#x529B;&#x6316;&#x77FF;&#x4FDD;&#x8BC1;&#x793E;&#x533A;&#x6269;&#x5F20;,&#x4E24;&#x4E2A;&#x89C4;&#x5219;&#x76F8;&#x4E92;&#x4F9D;&#x8D56;&#xFF0C;&#x7F3A;&#x5C11;&#x4E00;&#x4E2A;&#x5C31;&#x4F1A;&#x5F71;&#x54CD;&#x793E;&#x533A;&#x53D1;&#x5C55;.</li>
+<li>&#x5F53;&#x524D;&#x7684;&#x73AF;&#x5883;&#xFF0C;&#x60F3;&#x5F97;&#x5230;&#x4FE1;&#x4EFB;&#x975E;&#x5E38;&#x56F0;&#x96BE;&#xFF0C;&#x9700;&#x8981;&#x9760;&#x524D;&#x671F;&#x7684;&#x8D44;&#x91D1;&#x6765;&#x83B7;&#x5F97;&#x522B;&#x4EBA;&#x7684;&#x4FE1;&#x4EFB;.</li>
+<li>&#x64CD;&#x4F5C;&#x754C;&#x9762;&#x4E0A;&#x663E;&#x793A;&#x8EBA;&#x8D62;&#x5956;&#x6765;&#x6FC0;&#x52B1;&#x522B;&#x4EBA;&#xFF0C;&#x80A1;&#x4E1C;(&#x519B;&#x56E2;&#x957F;)&#x8EBA;&#x8D62;&#x5956;&#x7684;&#x591A;&#x5C11;&#x53EF;&#x4EE5;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#x7684;&#x770B;&#x5230;&#x4ED6;&#x4EEC;&#x505A;&#x7684;&#x597D;&#x574F;&#xFF0C;&#x6BCF;&#x4E2A;&#x5468;&#x671F;&#x5730;&#x5740;&#x589E;&#x52A0;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x63A8;&#x5E7F;&#x6570;&#x91CF;&#xFF0C;&#x8D44;&#x91D1;&#x6C60;&#x6DF1;&#x5EA6;&#xFF0C;&#x4EA4;&#x6613;&#x989D;&#xFF0C;&#x90FD;&#x662F;&#x53D1;&#x5C55;&#x54B1;&#x4EEC;&#x53D1;&#x5C55;&#x597D;&#x574F;&#x7684;&#x6307;&#x6807;.</li>
+<li>&#x5927;&#x91CF;&#x7A7A;&#x6295;&#x5F00;&#x53D1;&#x793E;&#x533A;&#x6216;&#x8005;&#x627E;BM108&#x8FD9;&#x6837;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x8BA9;&#x4ED6;&#x4EEC;&#x770B;&#x5230;&#x6C60;&#x5B50;&#x7684;&#x6DF1;&#x5EA6;&#x548C;&#x4EA4;&#x6613;&#x91CF;&#xFF0C;&#x5E76;&#x4E14;&#x8FDE;&#x7EED;&#x51E0;&#x6B21;&#x7684;&#x6210;&#x529F;&#x5957;&#x73B0;&#xFF0C;&#x5EFA;&#x7ACB;&#x4FE1;&#x4EFB;&#x5173;&#x7CFB;&#x540E;&#xFF0C;&#x624D;&#x597D;&#x8BA9;&#x4ED6;&#x4EEC;&#x505A;&#x5230;&#x771F;&#x6B63;&#x7684;&#x6295;&#x8D44;.</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  
+    </body></html>
